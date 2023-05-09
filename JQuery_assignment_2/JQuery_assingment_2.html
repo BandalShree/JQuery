@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <form > 
+        <img src="stephan-louis-TLqU-IBNBGM-unsplash.jpg" alt="img" width="500" style="margin-bottom: 50px;"><br>
+        <input type="radio" name="btn" value="Show" id="show">Show
+        <input type="radio" name="btn" value="Hide" id="hide" checked>Hide <br>
+        <button style="font-size: large;">Hide</button>
+    </form>
+</body>
+<script>
+    $(document).ready(()=>{
+        $('button').click((event)=>{
+            if($('input[type=radio]:checked').val()==="Hide"){
+                $('button').html("Show")
+                $('img').css("visibility","hidden")
+            }
+            else{
+                $('button').html("Hide")
+                $('img').css("visibility","visible")
+            }
+            event.preventDefault()
+        })
+    })
+</script>
+</html>

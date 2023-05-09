@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        form{
+            background-color: cyan;
+            width: 50%;
+            border: 1px solid red;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <!-- <div style="border:1px; border-color:  black; border-style: solid; width: 300px;"> -->
+    <form >
+        <h2 style="text-align: center;">Employee registration form</h2>
+        <table align="center">
+            <tr>
+                <td><label for="Name">Name: </label></td>
+                <td><input type="text" id="Name" name="Name"></td>
+                
+            </tr>
+            <tr>
+                <td><label for="email">Email: </label></td>
+                <td><input type="text" id="email" name="email"></td>
+                
+            </tr>
+            <tr>
+                <td><label for="Name">Salary: </label></td>
+                <td><input type="text" id="sal" name="sal"></td>
+                
+            </tr>
+            <tr>
+                <td><button type="submit">Submit</button></td>
+                <td><button type="reset"> Cancel</button></td>
+            </tr>
+    </table>
+    </form>
+</div>
+
+
+<script>
+    $(document).ready(()=>{
+       
+        
+        $('input[type=text]').focus((e)=>{
+            $(e.target).css('background-color','yellow')
+        })
+        $('input[type=text]').blur((e)=>{
+            $(e.target).removeAttr("style")
+        })
+        $('button[type=submit]').click((eve)=>{
+            let p = /An.*/.test($('#Name').val())
+            eve.preventDefault()
+            if(p){
+                alert('name starts with An')
+                $('form').css('background-color','cyan')
+            }
+        })
+
+
+        
+    })
+</script>
+    
+</body>
+</html>

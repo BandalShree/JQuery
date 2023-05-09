@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.js"
+        integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+
+
+</head>
+
+<body>
+    <form>
+        Name: <input type="text" name="name" id="name" required>
+        date: <input type="datetime-local" name="date" id="date" required>
+        No. of seats: <input type="number" name="seats" id="seats" required>
+        <input value="Book Ticket" type="submit" name="btn" id="btn">
+    </form>
+</body>
+<script>
+    var c = 1
+    $(document).ready(() => {
+        $('input[type=submit]').one('click', (e) => {
+            let seats = parseInt($('#seats').val())
+            if ($('#name').val() !== "" && $('#date').val() !== "" && $('#seats').val() !== "") {
+                for (let i = 0; i < seats; i++) {
+                    let name = $('#name').clone()
+                    name.attr({ id: `name${(c++)}`, required: true })
+                    name.val("")
+                    $('form').append(name)
+
+                    $('form').append(document.createElement("br"))
+                }
+                $('form').append($('#btn').clone().attr({ id: "btn1", type: "submit" }).val("Submit"))
+            }
+            // e.preventDefault()
+
+            // console.log($('#btn1'))
+
+
+            let val;
+            $('#btn1').one('click', (ev) => {
+                let info=""
+                $('input').each((i,element) => {
+                    if(element.name !== "btn" && element.name !== "btn1" ) 
+                    info += element.name + " :: " + element.value + "\n"
+                })
+                alert(info)
+                ev.preventDefault()
+            })
+
+        })
+
+
+    })
+</script>
+
+</html>
